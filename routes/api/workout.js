@@ -82,6 +82,30 @@ router.get('/', async (req, res) => {
     }
 });
 
+// @route   Get api/exercise/:id
+// @desc    Get exercise by id
+// @access  Public
+
+router.get('/:id', async (req, res) => {
+    try {
+        //const id = req.params.id;
+
+        const workout = await Workout.findById(req.params.id);
+
+        if (!workout) {
+            return res.status(404).json({ msg: 'Workout not found' });
+
+        }
+        res.json(workout);
+    } catch (error) {
+        console.error(error.message);
+        if (error.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Workout not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   DELETE api/exercise/:exercise
 // @desc    Delete a exercise
 // @access  Public
