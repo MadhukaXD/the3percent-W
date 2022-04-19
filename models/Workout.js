@@ -6,7 +6,10 @@ const WorkoutSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-
+    WorkoutDescription: {
+        type: String,
+        required: false
+    },
     WorkoutLevel: {
         type: String,
         required: false
@@ -81,6 +84,10 @@ const WorkoutSchema = new mongoose.Schema({
             },
             Image: {
                 type: String,
+            },
+            Date: {
+                type: Date,
+                default: Date.now(),
             },
         }
     ],

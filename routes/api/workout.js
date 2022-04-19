@@ -20,6 +20,7 @@ router.post('/', [
 
         const {
             WorkoutTitle,
+            WorkoutDescription,
             WorkoutLevel,
             Location,
             Goal,
@@ -31,6 +32,7 @@ router.post('/', [
 
         const workoutsFields = {};
         if (WorkoutTitle) workoutsFields.WorkoutTitle = WorkoutTitle;
+        if (WorkoutDescription) workoutsFields.WorkoutDescription = WorkoutDescription;
         if (WorkoutLevel) workoutsFields.WorkoutLevel = WorkoutLevel;
         if (Location) workoutsFields.Location = Location;
         if (Goal) workoutsFields.Goal = Goal;
@@ -83,7 +85,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route   Get api/exercise/:id
-// @desc    Get exercise by id
+// @desc    Get Workout by id
 // @access  Public
 
 router.get('/:id', async (req, res) => {
